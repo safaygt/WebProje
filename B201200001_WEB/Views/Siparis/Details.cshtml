@@ -1,0 +1,58 @@
+﻿@model B201200001_WEB.Siparis
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Siparis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Oyuncak_Adet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oyuncak_Adet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fatura_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fatura_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kullanici.Kullanici_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kullanici.Kullanici_Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Magaza.Magaza_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Magaza.Magaza_Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oyuncak.Oyuncak_Tur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oyuncak.Oyuncak_Tur)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Siparis_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

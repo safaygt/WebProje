@@ -1,0 +1,76 @@
+﻿@model IEnumerable<B201200001_WEB.Adres>
+
+@{
+    ViewBag.Title = "Adres";
+}
+
+
+<div>
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kullanici.Kullanici_Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sehir.Sehir_Ad)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ilce.ilce_Ad)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mahalle.Mahalle_Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sokak.Sokak_Ad)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bina_No)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kullanici.Kullanici_Ad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sehir.Sehir_Ad)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ilce.ilce_Ad)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mahalle.Mahalle_Ad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sokak.Sokak_Ad)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bina_No)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Adres_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Adres_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Adres_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+</div>

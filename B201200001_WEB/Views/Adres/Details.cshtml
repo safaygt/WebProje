@@ -1,0 +1,66 @@
+﻿@model B201200001_WEB.Adres
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Adres</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bina_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bina_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ilce.ilce_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ilce.ilce_Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kullanici.Kullanici_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kullanici.Kullanici_Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mahalle.Mahalle_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mahalle.Mahalle_Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sehir.Sehir_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sehir.Sehir_Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sokak.Sokak_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sokak.Sokak_Ad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Adres_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

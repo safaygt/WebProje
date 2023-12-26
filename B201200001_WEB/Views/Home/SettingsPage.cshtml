@@ -1,0 +1,349 @@
+﻿@*@model B201200001_WEB.Kullanici
+
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+        ViewBag.Title = "Settings";
+    }
+
+    <!doctype html>
+    <html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+        <style>
+            #ema {
+                color:gray;
+                font-weight:bold;
+            }
+
+        </style>
+
+
+    </head>
+
+    <body class="mt-5 pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+                    <h2 class="h3 mb-4 page-title">Settings</h2>
+                    <div class="my-4">
+                        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="@Url.Action("ChangePassword","Home")" role="tab" aria-controls="home" aria-selected="false">Change Password</a>
+                            </li>
+                        </ul>
+                        <form>
+                            <div class="row mt-5 align-items-center">
+                                <div class="col">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-7">
+                                            <h4 class="mb-1">Welcome, @Model.Kullanici_Ad</h4>
+                                            <p class="m mb-3">Email: <span id="ema">@Model.Email</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col-md-7">
+                                            <p class="text-muted">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus. In hac habitasse platea dictumst. Cras urna quam, malesuada vitae risus at,
+                                                pretium blandit sapien.
+                                            </p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="small mb-0 text-muted">Nec Urna Suscipit Ltd</p>
+                                            <p class="small mb-0 text-muted">P.O. Box 464, 5975 Eget Avenue</p>
+                                            <p class="small mb-0 text-muted">(537) 315-1481</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-4" />
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="firstname">User Name</label>
+                                    <input type="text" id="firstname" class="form-control" placeholder="@Model.Kullanici_Ad" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" id="inputEmail4" placeholder="@Model.Email" />
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-4">
+                                    <label for="inputState5">City</label>
+                                    <select id="inputState5" class="form-control">
+
+                                        <option>Ankara</option>
+                                        <option>İstanbul</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState5">İlçe</label>
+                                    <select id="inputState5" class="form-control">
+                                        <option selected="">Sincan</option>
+                                        <option>Çankaya</option>
+                                        <option>Beşiktaş</option>
+                                        <option>Kadıköy</option>
+                                        <option>Üsküdar</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState5">Mahalle</label>
+                                    <select id="inputState5" class="form-control">
+                                        <option selected="">Andicen</option>
+                                        <option>Beşevler</option>
+                                        <option>Ortaköy</option>
+                                        <option>Çekmeköy</option>
+                                        <option>Su</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState5">Sokak</label>
+                                    <select id="inputState5" class="form-control">
+                                        <option selected="">Güzelgah</option>
+                                        <option>Cengiz Topel</option>
+                                        <option>Menderes</option>
+                                        <option>Anadolu</option>
+                                        <option>Hayat</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputCompany5">Bina No</label>
+                                    <input type="text" class="form-control" id="inputCompany5" placeholder="15" />
+                                </div>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary mt-3">Save Change</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </body>
+    </html>*@
+
+
+
+
+
+@model B201200001_WEB.Models.SettingsViewModel
+
+@{ 
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    
+     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+
+        .ema {
+            color: gray;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="mt-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+                <h2 class="h3 mb-4 page-title">Settings</h2>
+                <div class="my-4">
+                    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="home-tab" data-toggle="tab" href="@Url.Action("ChangePassword", "Home")" role="tab" aria-controls="home" aria-selected="false">Change Password</a>
+
+                        </li>
+                        @if (Model.User.Admin_Situation == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" id="admin-tab" data-toggle="tab" href="@Url.Action("Index", "Kullanicis")" role="tab" aria-controls="admin" aria-selected="false">Admin Panel</a>
+                            </li>
+                        }
+                    </ul>
+                    <form method="post" action="@Url.Action("SettingsPage","Home")">
+                        <div class="row mt-5 align-items-center">
+                            <div class="col">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <h4 class="mb-1">Welcome, @Model.User.Kullanici_Ad</h4>
+                                        <p class="m mb-3">Email: <span class="ema">@Model.User.Email</span></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <h5>Mevcut Adres</h5>
+                                    <div class="col-md-7">
+                                        <p class="m">
+                                            Şehir:
+                                            <span class="text-muted ema">@Model.Adres.Sehir</span>
+                                        </p>
+
+                                        <p class="m">
+                                            Kullanici ID:
+                                            <span class="text-muted ema">@Model.User.Kullanici_ID</span>
+                                        </p>
+
+                                        <p class="m">
+                                            Adres ID:
+                                            <span class="text-muted ema">@Model.User.Adres_ID</span>
+                                        </p>
+
+                                        <p class="m">
+                                            İlçe:
+                                            <span class="text-muted ema">@Model.Adres.Ilce</span>
+                                        </p>
+                                        <p class="m">
+                                            Mahalle:
+                                            <span class="text-muted ema ">@Model.Adres.Mahalle</span>
+                                        </p>
+                                        <p class="m">
+                                            Sokak:
+                                            <span class="text-muted ema">@Model.Adres.Sokak</span>
+                                        </p>
+                                        <p class="m">
+                                            Bina NO:
+                                            <span class="text-muted ema">@Model.Adres.BinaNo</span>
+                                        </p>
+                                    </div>
+                                    <div class="col">
+
+
+                                        <p class="small mb-0 text-muted">Nec Urna Suscipit Ltd</p>
+                                        <p class="small mb-0 text-muted">P.O. Box 464, 5975 Eget Avenue</p>
+                                        <p class="small mb-0 text-muted">(537) 315-1481</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+
+                        <!-- Şehir seçimi için dropdown -->
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputState5">City</label>
+                                <select id="inputState5" class="form-control" name="selectedCity">
+                                    @foreach (var city in Model.Cities)
+                                    {
+                                        <option @(city.Sehir_ID.ToString() == Model.Adres.Sehir ? "selected" : "")>@city.Sehir_Ad</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputState6">İlçe</label>
+                                <select id="inputState6" class="form-control" name="selectedIlce">
+                                    @foreach (var ilce in Model.Ilceler)
+                                    {
+                                        <option @(ilce.ilce_ID.ToString() == Model.Adres.Ilce ? "selected" : "")>@ilce.ilce_Ad</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputState7">Mahalle</label>
+                                <select id="inputState7" class="form-control" name="selectedMahalle">
+                                    @foreach (var mahalle in Model.Mahalleler)
+                                    {
+                                        <option @(mahalle.Mahalle_ID.ToString() == Model.Adres.Mahalle ? "selected" : "")>@mahalle.Mahalle_Ad</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputState8">Sokak</label>
+                                <select id="inputState8" class="form-control" name="selectedSokak">
+                                    @foreach (var sokak in Model.Sokaklar)
+                                    {
+                                        <option @(sokak.Sokak_ID.ToString() == Model.Adres.Mahalle ? "selected" : "")>@sokak.Sokak_Ad</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputCompany5">Bina No</label>
+                                <input type="text" class="form-control" id="inputCompany5" name="BinaNo" value="@Model.Adres.BinaNo" />
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <button type="submit" class="btn btn-primary mt-3">Save Change</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    $(document).ready(function () {
+        $("#inputState6").change(function () {
+            var selectedCityId = $(this).val();
+
+            // AJAX çağrısı ile ilçeleri getir
+            $.ajax({
+                url: '@Url.Action("GetIlceler", "Home")',
+                type: 'GET',
+                data: { cityId: selectedCityId },
+                success: function (data) {
+                    // ilçeleri güncelle
+                    var ilceDropdown = $("#inputIlce");
+                    ilceDropdown.empty();
+
+                    // ilçeleri ekle
+                    $.each(data, function (index, ilce) {
+                        ilceDropdown.append($('<option></option>').val(ilce.ilce_ID).html(ilce.ilce_Ad));
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+    </script>
+
+
+
+
+    
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="web_programlamaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="Adres_ID" />
+          </Key>
+          <Property Name="Adres_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sehir_ID" Type="int" />
+          <Property Name="ilce_ID" Type="int" />
+          <Property Name="Mahalle_ID" Type="int" />
+          <Property Name="Sokak_ID" Type="int" />
+          <Property Name="Bina_No" Type="int" />
+          <Property Name="Kullanici_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Fatura">
+          <Key>
+            <PropertyRef Name="Fatura_ID" />
+          </Key>
+          <Property Name="Fatura_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tutar" Type="float" />
+          <Property Name="Siparis_Tarih" Type="datetime" />
+          <Property Name="Siparis_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ilce">
+          <Key>
+            <PropertyRef Name="ilce_ID" />
+          </Key>
+          <Property Name="ilce_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilce_Ad" Type="varchar" MaxLength="50" />
+          <Property Name="Sehir_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Kullanici_ID" />
+          </Key>
+          <Property Name="Kullanici_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanici_Ad" Type="varchar" MaxLength="20" />
+          <Property Name="Sifre" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Adres_ID" Type="int" />
+          <Property Name="Siparis_ID" Type="int" />
+          <Property Name="Admin_Situation" Type="bit" />
+        </EntityType>
+        <EntityType Name="Magaza">
+          <Key>
+            <PropertyRef Name="Magaza_ID" />
+          </Key>
+          <Property Name="Magaza_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Magaza_Ad" Type="varchar" MaxLength="50" />
+          <Property Name="Siparis_ID" Type="int" />
+          <Property Name="Oyuncak_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Mahalle">
+          <Key>
+            <PropertyRef Name="Mahalle_ID" />
+          </Key>
+          <Property Name="Mahalle_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mahalle_Ad" Type="varchar" MaxLength="50" />
+          <Property Name="ilce_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Oyuncak">
+          <Key>
+            <PropertyRef Name="Oyuncak_ID" />
+          </Key>
+          <Property Name="Oyuncak_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Oyuncak_Tur_ID" Type="int" />
+          <Property Name="Oyuncak_Agirlik" Type="float" />
+          <Property Name="Oyuncak_Boy" Type="float" />
+          <Property Name="Oyuncak_Renk_ID" Type="int" />
+          <Property Name="Oyuncak_Resim" Type="varchar" MaxLength="50" />
+          <Property Name="Oyuncak_Fiyat" Type="float" />
+          <Property Name="Siparis_ID" Type="int" />
+          <Property Name="Magaza_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="OyuncakRenk">
+          <Key>
+            <PropertyRef Name="Oyuncak_Renk_ID" />
+          </Key>
+          <Property Name="Oyuncak_Renk_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Oyuncak_Renk" Type="varchar" MaxLength="50" />
+          <Property Name="Oyuncak_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="OyuncakTur">
+          <Key>
+            <PropertyRef Name="Oyuncak_Tur_ID" />
+          </Key>
+          <Property Name="Oyuncak_Tur_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Oyuncak_Tur" Type="varchar" MaxLength="50" />
+          <Property Name="Oyuncak_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Sehir">
+          <Key>
+            <PropertyRef Name="Sehir_ID" />
+          </Key>
+          <Property Name="Sehir_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sehir_Ad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Siparis">
+          <Key>
+            <PropertyRef Name="Siparis_ID" />
+          </Key>
+          <Property Name="Siparis_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Oyuncak_Adet" Type="int" />
+          <Property Name="Kullanici_ID" Type="int" />
+          <Property Name="Oyuncak_ID" Type="int" />
+          <Property Name="Fatura_ID" Type="int" />
+          <Property Name="Magaza_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Sokak">
+          <Key>
+            <PropertyRef Name="Sokak_ID" />
+          </Key>
+          <Property Name="Sokak_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sokak_Ad" Type="varchar" MaxLength="50" />
+          <Property Name="Mahalle_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Fatura_Siparis">
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="0..1" />
+          <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siparis">
+              <PropertyRef Name="Siparis_ID" />
+            </Principal>
+            <Dependent Role="Fatura">
+              <PropertyRef Name="Siparis_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilce_Adres">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilce_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="ilce_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilce_sehir">
+          <End Role="Sehir" Type="Self.Sehir" Multiplicity="0..1" />
+          <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehir">
+              <PropertyRef Name="Sehir_ID" />
+            </Principal>
+            <Dependent Role="ilce">
+              <PropertyRef Name="Sehir_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Adres">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mahalle_Adres">
+          <End Role="Mahalle" Type="Self.Mahalle" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mahalle">
+              <PropertyRef Name="Mahalle_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Mahalle_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mahalle_ilce">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="0..1" />
+          <End Role="Mahalle" Type="Self.Mahalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilce_ID" />
+            </Principal>
+            <Dependent Role="Mahalle">
+              <PropertyRef Name="ilce_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oyuncak_Magaza">
+          <End Role="Magaza" Type="Self.Magaza" Multiplicity="0..1" />
+          <End Role="Oyuncak" Type="Self.Oyuncak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magaza">
+              <PropertyRef Name="Magaza_ID" />
+            </Principal>
+            <Dependent Role="Oyuncak">
+              <PropertyRef Name="Magaza_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OyuncakRenk_Oyuncak">
+          <End Role="Oyuncak" Type="Self.Oyuncak" Multiplicity="0..1" />
+          <End Role="OyuncakRenk" Type="Self.OyuncakRenk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oyuncak">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Principal>
+            <Dependent Role="OyuncakRenk">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OyuncakTur_Oyuncak">
+          <End Role="Oyuncak" Type="Self.Oyuncak" Multiplicity="0..1" />
+          <End Role="OyuncakTur" Type="Self.OyuncakTur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oyuncak">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Principal>
+            <Dependent Role="OyuncakTur">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sehir_Adres">
+          <End Role="Sehir" Type="Self.Sehir" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehir">
+              <PropertyRef Name="Sehir_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Sehir_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Magaza">
+          <End Role="Magaza" Type="Self.Magaza" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magaza">
+              <PropertyRef Name="Magaza_ID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="Magaza_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Oyuncak">
+          <End Role="Oyuncak" Type="Self.Oyuncak" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oyuncak">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sokak_Adres">
+          <End Role="Sokak" Type="Self.Sokak" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sokak">
+              <PropertyRef Name="Sokak_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Sokak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sokak_Mahalle">
+          <End Role="Mahalle" Type="Self.Mahalle" Multiplicity="0..1" />
+          <End Role="Sokak" Type="Self.Sokak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mahalle">
+              <PropertyRef Name="Mahalle_ID" />
+            </Principal>
+            <Dependent Role="Sokak">
+              <PropertyRef Name="Mahalle_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="web_programlamaModelStoreContainer">
+          <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fatura" EntityType="Self.Fatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilce" EntityType="Self.ilce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magaza" EntityType="Self.Magaza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mahalle" EntityType="Self.Mahalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oyuncak" EntityType="Self.Oyuncak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OyuncakRenk" EntityType="Self.OyuncakRenk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OyuncakTur" EntityType="Self.OyuncakTur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sehir" EntityType="Self.Sehir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siparis" EntityType="Self.Siparis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sokak" EntityType="Self.Sokak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Fatura_Siparis" Association="Self.FK_Fatura_Siparis">
+            <End Role="Siparis" EntitySet="Siparis" />
+            <End Role="Fatura" EntitySet="Fatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilce_Adres" Association="Self.FK_ilce_Adres">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilce_sehir" Association="Self.FK_ilce_sehir">
+            <End Role="Sehir" EntitySet="Sehir" />
+            <End Role="ilce" EntitySet="ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Adres" Association="Self.FK_Kullanici_Adres">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mahalle_Adres" Association="Self.FK_Mahalle_Adres">
+            <End Role="Mahalle" EntitySet="Mahalle" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mahalle_ilce" Association="Self.FK_Mahalle_ilce">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="Mahalle" EntitySet="Mahalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oyuncak_Magaza" Association="Self.FK_Oyuncak_Magaza">
+            <End Role="Magaza" EntitySet="Magaza" />
+            <End Role="Oyuncak" EntitySet="Oyuncak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OyuncakRenk_Oyuncak" Association="Self.FK_OyuncakRenk_Oyuncak">
+            <End Role="Oyuncak" EntitySet="Oyuncak" />
+            <End Role="OyuncakRenk" EntitySet="OyuncakRenk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OyuncakTur_Oyuncak" Association="Self.FK_OyuncakTur_Oyuncak">
+            <End Role="Oyuncak" EntitySet="Oyuncak" />
+            <End Role="OyuncakTur" EntitySet="OyuncakTur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sehir_Adres" Association="Self.FK_Sehir_Adres">
+            <End Role="Sehir" EntitySet="Sehir" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Kullanici" Association="Self.FK_Siparis_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Magaza" Association="Self.FK_Siparis_Magaza">
+            <End Role="Magaza" EntitySet="Magaza" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Oyuncak" Association="Self.FK_Siparis_Oyuncak">
+            <End Role="Oyuncak" EntitySet="Oyuncak" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sokak_Adres" Association="Self.FK_Sokak_Adres">
+            <End Role="Sokak" EntitySet="Sokak" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sokak_Mahalle" Association="Self.FK_Sokak_Mahalle">
+            <End Role="Mahalle" EntitySet="Mahalle" />
+            <End Role="Sokak" EntitySet="Sokak" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="web_programlamaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="Adres_ID" />
+          </Key>
+          <Property Name="Adres_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sehir_ID" Type="Int32" />
+          <Property Name="ilce_ID" Type="Int32" />
+          <Property Name="Mahalle_ID" Type="Int32" />
+          <Property Name="Sokak_ID" Type="Int32" />
+          <Property Name="Bina_No" Type="Int32" />
+          <Property Name="Kullanici_ID" Type="Int32" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_ilce_Adres" FromRole="Adres" ToRole="ilce" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Kullanici_Adres" FromRole="Adres" ToRole="Kullanici" />
+          <NavigationProperty Name="Mahalle" Relationship="Self.FK_Mahalle_Adres" FromRole="Adres" ToRole="Mahalle" />
+          <NavigationProperty Name="Sehir" Relationship="Self.FK_Sehir_Adres" FromRole="Adres" ToRole="Sehir" />
+          <NavigationProperty Name="Sokak" Relationship="Self.FK_Sokak_Adres" FromRole="Adres" ToRole="Sokak" />
+        </EntityType>
+        <EntityType Name="Fatura">
+          <Key>
+            <PropertyRef Name="Fatura_ID" />
+          </Key>
+          <Property Name="Fatura_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tutar" Type="Double" />
+          <Property Name="Siparis_Tarih" Type="DateTime" Precision="3" />
+          <Property Name="Siparis_ID" Type="Int32" />
+          <NavigationProperty Name="Siparis" Relationship="Self.FK_Fatura_Siparis" FromRole="Fatura" ToRole="Siparis" />
+        </EntityType>
+        <EntityType Name="ilce">
+          <Key>
+            <PropertyRef Name="ilce_ID" />
+          </Key>
+          <Property Name="ilce_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilce_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sehir_ID" Type="Int32" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_ilce_Adres" FromRole="ilce" ToRole="Adres" />
+          <NavigationProperty Name="Sehir" Relationship="Self.FK_ilce_sehir" FromRole="ilce" ToRole="Sehir" />
+          <NavigationProperty Name="Mahalle" Relationship="Self.FK_Mahalle_ilce" FromRole="ilce" ToRole="Mahalle" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Kullanici_ID" />
+          </Key>
+          <Property Name="Kullanici_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanici_Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adres_ID" Type="Int32" />
+          <Property Name="Siparis_ID" Type="Int32" />
+          <Property Name="Admin_Situation" Type="Boolean" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Kullanici_Adres" FromRole="Kullanici" ToRole="Adres" />
+          <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Kullanici" FromRole="Kullanici" ToRole="Siparis" />
+        </EntityType>
+        <EntityType Name="Magaza">
+          <Key>
+            <PropertyRef Name="Magaza_ID" />
+          </Key>
+          <Property Name="Magaza_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Magaza_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Siparis_ID" Type="Int32" />
+          <Property Name="Oyuncak_ID" Type="Int32" />
+          <NavigationProperty Name="Oyuncak" Relationship="Self.FK_Oyuncak_Magaza" FromRole="Magaza" ToRole="Oyuncak" />
+          <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Magaza" FromRole="Magaza" ToRole="Siparis" />
+        </EntityType>
+        <EntityType Name="Mahalle">
+          <Key>
+            <PropertyRef Name="Mahalle_ID" />
+          </Key>
+          <Property Name="Mahalle_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mahalle_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ilce_ID" Type="Int32" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Mahalle_Adres" FromRole="Mahalle" ToRole="Adres" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_Mahalle_ilce" FromRole="Mahalle" ToRole="ilce" />
+          <NavigationProperty Name="Sokak" Relationship="Self.FK_Sokak_Mahalle" FromRole="Mahalle" ToRole="Sokak" />
+        </EntityType>
+        <EntityType Name="Oyuncak">
+          <Key>
+            <PropertyRef Name="Oyuncak_ID" />
+          </Key>
+          <Property Name="Oyuncak_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Oyuncak_Tur_ID" Type="Int32" />
+          <Property Name="Oyuncak_Agirlik" Type="Double" />
+          <Property Name="Oyuncak_Boy" Type="Double" />
+          <Property Name="Oyuncak_Renk_ID" Type="Int32" />
+          <Property Name="Oyuncak_Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Oyuncak_Fiyat" Type="Double" />
+          <Property Name="Siparis_ID" Type="Int32" />
+          <Property Name="Magaza_ID" Type="Int32" />
+          <NavigationProperty Name="Magaza" Relationship="Self.FK_Oyuncak_Magaza" FromRole="Oyuncak" ToRole="Magaza" />
+          <NavigationProperty Name="OyuncakRenk" Relationship="Self.FK_OyuncakRenk_Oyuncak" FromRole="Oyuncak" ToRole="OyuncakRenk" />
+          <NavigationProperty Name="OyuncakTur" Relationship="Self.FK_OyuncakTur_Oyuncak" FromRole="Oyuncak" ToRole="OyuncakTur" />
+          <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Oyuncak" FromRole="Oyuncak" ToRole="Siparis" />
+        </EntityType>
+        <EntityType Name="OyuncakRenk">
+          <Key>
+            <PropertyRef Name="Oyuncak_Renk_ID" />
+          </Key>
+          <Property Name="Oyuncak_Renk_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Oyuncak_Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Oyuncak_ID" Type="Int32" />
+          <NavigationProperty Name="Oyuncak" Relationship="Self.FK_OyuncakRenk_Oyuncak" FromRole="OyuncakRenk" ToRole="Oyuncak" />
+        </EntityType>
+        <EntityType Name="OyuncakTur">
+          <Key>
+            <PropertyRef Name="Oyuncak_Tur_ID" />
+          </Key>
+          <Property Name="Oyuncak_Tur_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Oyuncak_Tur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Oyuncak_ID" Type="Int32" />
+          <NavigationProperty Name="Oyuncak" Relationship="Self.FK_OyuncakTur_Oyuncak" FromRole="OyuncakTur" ToRole="Oyuncak" />
+        </EntityType>
+        <EntityType Name="Sehir">
+          <Key>
+            <PropertyRef Name="Sehir_ID" />
+          </Key>
+          <Property Name="Sehir_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sehir_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Sehir_Adres" FromRole="Sehir" ToRole="Adres" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_ilce_sehir" FromRole="Sehir" ToRole="ilce" />
+        </EntityType>
+        <EntityType Name="Siparis">
+          <Key>
+            <PropertyRef Name="Siparis_ID" />
+          </Key>
+          <Property Name="Siparis_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Oyuncak_Adet" Type="Int32" />
+          <Property Name="Kullanici_ID" Type="Int32" />
+          <Property Name="Oyuncak_ID" Type="Int32" />
+          <Property Name="Fatura_ID" Type="Int32" />
+          <Property Name="Magaza_ID" Type="Int32" />
+          <NavigationProperty Name="Fatura" Relationship="Self.FK_Fatura_Siparis" FromRole="Siparis" ToRole="Fatura" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Siparis_Kullanici" FromRole="Siparis" ToRole="Kullanici" />
+          <NavigationProperty Name="Magaza" Relationship="Self.FK_Siparis_Magaza" FromRole="Siparis" ToRole="Magaza" />
+          <NavigationProperty Name="Oyuncak" Relationship="Self.FK_Siparis_Oyuncak" FromRole="Siparis" ToRole="Oyuncak" />
+        </EntityType>
+        <EntityType Name="Sokak">
+          <Key>
+            <PropertyRef Name="Sokak_ID" />
+          </Key>
+          <Property Name="Sokak_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sokak_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mahalle_ID" Type="Int32" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Sokak_Adres" FromRole="Sokak" ToRole="Adres" />
+          <NavigationProperty Name="Mahalle" Relationship="Self.FK_Sokak_Mahalle" FromRole="Sokak" ToRole="Mahalle" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_ilce_Adres">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilce_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="ilce_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Adres">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mahalle_Adres">
+          <End Role="Mahalle" Type="Self.Mahalle" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mahalle">
+              <PropertyRef Name="Mahalle_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Mahalle_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sehir_Adres">
+          <End Role="Sehir" Type="Self.Sehir" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehir">
+              <PropertyRef Name="Sehir_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Sehir_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sokak_Adres">
+          <End Role="Sokak" Type="Self.Sokak" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sokak">
+              <PropertyRef Name="Sokak_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Sokak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fatura_Siparis">
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="0..1" />
+          <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siparis">
+              <PropertyRef Name="Siparis_ID" />
+            </Principal>
+            <Dependent Role="Fatura">
+              <PropertyRef Name="Siparis_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilce_sehir">
+          <End Role="Sehir" Type="Self.Sehir" Multiplicity="0..1" />
+          <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehir">
+              <PropertyRef Name="Sehir_ID" />
+            </Principal>
+            <Dependent Role="ilce">
+              <PropertyRef Name="Sehir_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mahalle_ilce">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="0..1" />
+          <End Role="Mahalle" Type="Self.Mahalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilce_ID" />
+            </Principal>
+            <Dependent Role="Mahalle">
+              <PropertyRef Name="ilce_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oyuncak_Magaza">
+          <End Role="Magaza" Type="Self.Magaza" Multiplicity="0..1" />
+          <End Role="Oyuncak" Type="Self.Oyuncak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magaza">
+              <PropertyRef Name="Magaza_ID" />
+            </Principal>
+            <Dependent Role="Oyuncak">
+              <PropertyRef Name="Magaza_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Magaza">
+          <End Role="Magaza" Type="Self.Magaza" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magaza">
+              <PropertyRef Name="Magaza_ID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="Magaza_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sokak_Mahalle">
+          <End Role="Mahalle" Type="Self.Mahalle" Multiplicity="0..1" />
+          <End Role="Sokak" Type="Self.Sokak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mahalle">
+              <PropertyRef Name="Mahalle_ID" />
+            </Principal>
+            <Dependent Role="Sokak">
+              <PropertyRef Name="Mahalle_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OyuncakRenk_Oyuncak">
+          <End Role="Oyuncak" Type="Self.Oyuncak" Multiplicity="0..1" />
+          <End Role="OyuncakRenk" Type="Self.OyuncakRenk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oyuncak">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Principal>
+            <Dependent Role="OyuncakRenk">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OyuncakTur_Oyuncak">
+          <End Role="Oyuncak" Type="Self.Oyuncak" Multiplicity="0..1" />
+          <End Role="OyuncakTur" Type="Self.OyuncakTur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oyuncak">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Principal>
+            <Dependent Role="OyuncakTur">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Oyuncak">
+          <End Role="Oyuncak" Type="Self.Oyuncak" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oyuncak">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="Oyuncak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="web_programlamaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adres" EntityType="Self.Adres" />
+          <EntitySet Name="Fatura" EntityType="Self.Fatura" />
+          <EntitySet Name="ilce" EntityType="Self.ilce" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
+          <EntitySet Name="Magaza" EntityType="Self.Magaza" />
+          <EntitySet Name="Mahalle" EntityType="Self.Mahalle" />
+          <EntitySet Name="Oyuncak" EntityType="Self.Oyuncak" />
+          <EntitySet Name="OyuncakRenk" EntityType="Self.OyuncakRenk" />
+          <EntitySet Name="OyuncakTur" EntityType="Self.OyuncakTur" />
+          <EntitySet Name="Sehir" EntityType="Self.Sehir" />
+          <EntitySet Name="Siparis" EntityType="Self.Siparis" />
+          <EntitySet Name="Sokak" EntityType="Self.Sokak" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_ilce_Adres" Association="Self.FK_ilce_Adres">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Adres" Association="Self.FK_Kullanici_Adres">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mahalle_Adres" Association="Self.FK_Mahalle_Adres">
+            <End Role="Mahalle" EntitySet="Mahalle" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sehir_Adres" Association="Self.FK_Sehir_Adres">
+            <End Role="Sehir" EntitySet="Sehir" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sokak_Adres" Association="Self.FK_Sokak_Adres">
+            <End Role="Sokak" EntitySet="Sokak" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fatura_Siparis" Association="Self.FK_Fatura_Siparis">
+            <End Role="Siparis" EntitySet="Siparis" />
+            <End Role="Fatura" EntitySet="Fatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilce_sehir" Association="Self.FK_ilce_sehir">
+            <End Role="Sehir" EntitySet="Sehir" />
+            <End Role="ilce" EntitySet="ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mahalle_ilce" Association="Self.FK_Mahalle_ilce">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="Mahalle" EntitySet="Mahalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Kullanici" Association="Self.FK_Siparis_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oyuncak_Magaza" Association="Self.FK_Oyuncak_Magaza">
+            <End Role="Magaza" EntitySet="Magaza" />
+            <End Role="Oyuncak" EntitySet="Oyuncak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Magaza" Association="Self.FK_Siparis_Magaza">
+            <End Role="Magaza" EntitySet="Magaza" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sokak_Mahalle" Association="Self.FK_Sokak_Mahalle">
+            <End Role="Mahalle" EntitySet="Mahalle" />
+            <End Role="Sokak" EntitySet="Sokak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OyuncakRenk_Oyuncak" Association="Self.FK_OyuncakRenk_Oyuncak">
+            <End Role="Oyuncak" EntitySet="Oyuncak" />
+            <End Role="OyuncakRenk" EntitySet="OyuncakRenk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OyuncakTur_Oyuncak" Association="Self.FK_OyuncakTur_Oyuncak">
+            <End Role="Oyuncak" EntitySet="Oyuncak" />
+            <End Role="OyuncakTur" EntitySet="OyuncakTur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Oyuncak" Association="Self.FK_Siparis_Oyuncak">
+            <End Role="Oyuncak" EntitySet="Oyuncak" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="web_programlamaModelStoreContainer" CdmEntityContainer="web_programlamaEntities">
+          <EntitySetMapping Name="Adres">
+            <EntityTypeMapping TypeName="web_programlamaModel.Adres">
+              <MappingFragment StoreEntitySet="Adres">
+                <ScalarProperty Name="Adres_ID" ColumnName="Adres_ID" />
+                <ScalarProperty Name="Sehir_ID" ColumnName="Sehir_ID" />
+                <ScalarProperty Name="ilce_ID" ColumnName="ilce_ID" />
+                <ScalarProperty Name="Mahalle_ID" ColumnName="Mahalle_ID" />
+                <ScalarProperty Name="Sokak_ID" ColumnName="Sokak_ID" />
+                <ScalarProperty Name="Bina_No" ColumnName="Bina_No" />
+                <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fatura">
+            <EntityTypeMapping TypeName="web_programlamaModel.Fatura">
+              <MappingFragment StoreEntitySet="Fatura">
+                <ScalarProperty Name="Fatura_ID" ColumnName="Fatura_ID" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="Siparis_Tarih" ColumnName="Siparis_Tarih" />
+                <ScalarProperty Name="Siparis_ID" ColumnName="Siparis_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilce">
+            <EntityTypeMapping TypeName="web_programlamaModel.ilce">
+              <MappingFragment StoreEntitySet="ilce">
+                <ScalarProperty Name="ilce_ID" ColumnName="ilce_ID" />
+                <ScalarProperty Name="ilce_Ad" ColumnName="ilce_Ad" />
+                <ScalarProperty Name="Sehir_ID" ColumnName="Sehir_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici">
+            <EntityTypeMapping TypeName="web_programlamaModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+                <ScalarProperty Name="Kullanici_Ad" ColumnName="Kullanici_Ad" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Adres_ID" ColumnName="Adres_ID" />
+                <ScalarProperty Name="Siparis_ID" ColumnName="Siparis_ID" />
+                <ScalarProperty Name="Admin_Situation" ColumnName="Admin_Situation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magaza">
+            <EntityTypeMapping TypeName="web_programlamaModel.Magaza">
+              <MappingFragment StoreEntitySet="Magaza">
+                <ScalarProperty Name="Magaza_ID" ColumnName="Magaza_ID" />
+                <ScalarProperty Name="Magaza_Ad" ColumnName="Magaza_Ad" />
+                <ScalarProperty Name="Siparis_ID" ColumnName="Siparis_ID" />
+                <ScalarProperty Name="Oyuncak_ID" ColumnName="Oyuncak_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mahalle">
+            <EntityTypeMapping TypeName="web_programlamaModel.Mahalle">
+              <MappingFragment StoreEntitySet="Mahalle">
+                <ScalarProperty Name="Mahalle_ID" ColumnName="Mahalle_ID" />
+                <ScalarProperty Name="Mahalle_Ad" ColumnName="Mahalle_Ad" />
+                <ScalarProperty Name="ilce_ID" ColumnName="ilce_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oyuncak">
+            <EntityTypeMapping TypeName="web_programlamaModel.Oyuncak">
+              <MappingFragment StoreEntitySet="Oyuncak">
+                <ScalarProperty Name="Oyuncak_ID" ColumnName="Oyuncak_ID" />
+                <ScalarProperty Name="Oyuncak_Tur_ID" ColumnName="Oyuncak_Tur_ID" />
+                <ScalarProperty Name="Oyuncak_Agirlik" ColumnName="Oyuncak_Agirlik" />
+                <ScalarProperty Name="Oyuncak_Boy" ColumnName="Oyuncak_Boy" />
+                <ScalarProperty Name="Oyuncak_Renk_ID" ColumnName="Oyuncak_Renk_ID" />
+                <ScalarProperty Name="Oyuncak_Resim" ColumnName="Oyuncak_Resim" />
+                <ScalarProperty Name="Oyuncak_Fiyat" ColumnName="Oyuncak_Fiyat" />
+                <ScalarProperty Name="Siparis_ID" ColumnName="Siparis_ID" />
+                <ScalarProperty Name="Magaza_ID" ColumnName="Magaza_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OyuncakRenk">
+            <EntityTypeMapping TypeName="web_programlamaModel.OyuncakRenk">
+              <MappingFragment StoreEntitySet="OyuncakRenk">
+                <ScalarProperty Name="Oyuncak_Renk_ID" ColumnName="Oyuncak_Renk_ID" />
+                <ScalarProperty Name="Oyuncak_Renk" ColumnName="Oyuncak_Renk" />
+                <ScalarProperty Name="Oyuncak_ID" ColumnName="Oyuncak_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OyuncakTur">
+            <EntityTypeMapping TypeName="web_programlamaModel.OyuncakTur">
+              <MappingFragment StoreEntitySet="OyuncakTur">
+                <ScalarProperty Name="Oyuncak_Tur_ID" ColumnName="Oyuncak_Tur_ID" />
+                <ScalarProperty Name="Oyuncak_Tur" ColumnName="Oyuncak_Tur" />
+                <ScalarProperty Name="Oyuncak_ID" ColumnName="Oyuncak_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sehir">
+            <EntityTypeMapping TypeName="web_programlamaModel.Sehir">
+              <MappingFragment StoreEntitySet="Sehir">
+                <ScalarProperty Name="Sehir_ID" ColumnName="Sehir_ID" />
+                <ScalarProperty Name="Sehir_Ad" ColumnName="Sehir_Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siparis">
+            <EntityTypeMapping TypeName="web_programlamaModel.Siparis">
+              <MappingFragment StoreEntitySet="Siparis">
+                <ScalarProperty Name="Siparis_ID" ColumnName="Siparis_ID" />
+                <ScalarProperty Name="Oyuncak_Adet" ColumnName="Oyuncak_Adet" />
+                <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+                <ScalarProperty Name="Oyuncak_ID" ColumnName="Oyuncak_ID" />
+                <ScalarProperty Name="Fatura_ID" ColumnName="Fatura_ID" />
+                <ScalarProperty Name="Magaza_ID" ColumnName="Magaza_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sokak">
+            <EntityTypeMapping TypeName="web_programlamaModel.Sokak">
+              <MappingFragment StoreEntitySet="Sokak">
+                <ScalarProperty Name="Sokak_ID" ColumnName="Sokak_ID" />
+                <ScalarProperty Name="Sokak_Ad" ColumnName="Sokak_Ad" />
+                <ScalarProperty Name="Mahalle_ID" ColumnName="Mahalle_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="web_programlamaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

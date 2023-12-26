@@ -1,0 +1,87 @@
+﻿@model IEnumerable<B201200001_WEB.Kullanici>
+
+@{
+    ViewBag.Title = "Admin Panel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!doctype HTML>
+<html>
+
+<head>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+
+</head>
+
+<body>
+
+    <div class="container mt-5 py-5">
+
+
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link ,," id="home-tab" data-toggle="tab" href="@Url.Action("SettingsPage","Home")" role="tab" aria-controls="home" aria-selected="false">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab" data-toggle="tab" href="@Url.Action("ChangePassword", "Home")" role="tab" aria-controls="home" aria-selected="false">Change Password</a>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" id="admin-tab" data-toggle="tab" href="@Url.Action("Index", "Kullanicis")" role="tab" aria-controls="admin" aria-selected="false">Admin Panel</a>
+            </li>
+
+        </ul>
+
+
+
+        <h2>Kullanıcı Listesi</h2>
+
+        <p>
+            <a class="btn btn-primary" href="@Url.Action("Create")">Create New</a>
+        </p>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Kullanici_Ad)</th>
+                    <th>@Html.DisplayNameFor(model => model.Sifre)</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>@Html.DisplayNameFor(model => model.Adres_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.Siparis_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.Admin_Situation)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Kullanici_Ad)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Sifre)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Adres_ID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Siparis_ID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Admin_Situation)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Kullanici_ID }, new { @class = "btn btn-warning btn-sm" })
+                            @Html.ActionLink("Details", "Details", new { id = item.Kullanici_ID }, new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Kullanici_ID }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+﻿@*@model IEnumerable<B201200001_WEB.Oyuncak>*@
+
+
+@model B201200001_WEB.Oyuncak
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
+   
+    var oyuncakTur = Model.OyuncakTur.FirstOrDefault(t => t.Oyuncak_Tur_ID == Model.Oyuncak_Tur_ID);
+    var oyuncakRenk = Model.OyuncakRenk.FirstOrDefault(t => t.Oyuncak_Renk_ID == Model.Oyuncak_Renk_ID);
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>@ViewBag.Title</title>
+
+    <style>
+        .badge {
+            background-color: cornflowerblue;
+            color: aliceblue;
+            padding: 4px 8px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+
+        #buybutton {
+            text-decoration: none;
+            width: 80px;
+            border: 2px;
+            background-color: #3887BE;
+            font-weight:bold;
+            color:aliceblue;
+            margin-top:10px;
+            text-align:center;
+            font-size:20px;
+            justify-content:center;
+        }
+
+    </style>
+
+    
+</head>
+<body>
+
+    <div class="container pt-5 pb-5 mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src=@Model.Oyuncak_Resim class="img-responsive w-100">
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            @(oyuncakTur != null ? oyuncakTur.Oyuncak_Tur : "Tür bulunamadı")
+                        </h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="badge">In Stock</span>
+                        </div>
+                    </div>
+                    <div class="row mt-5" id="description">
+                        <div class="col-md-12">
+                            <p>Bu oyuncak <b>@Model.Magaza.Magaza_Ad</b> isimli mağazaya aittir. Bir sorun olması halinde mağazayla iletişime geçiniz.</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <span class="badge">53</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <h4 id="product-price">@Model.Oyuncak_Fiyat$</h4>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*@using (Html.BeginForm("AddToCart", "Home"))
+                        {
+
+                            @Html.HiddenFor(i => i.Oyuncak_ID)
+                            <button type="Submit" class="btn btn-success">
+                                <i class="bi bi-bag-plus-fill"></i>
+                                Buy
+                            </button>
+                        }*@
+
+
+                            <a href="@Url.Action("AddToCart", "Home", new { id = Model.Oyuncak_ID })" id="buybutton" class="card h-100">Buy</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="bd-example">
+                <nav>
+                    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Features</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="bd-example">
+                        <table class="table table-striped">
+                            <tbody>
+
+                                <tr>
+                                    <th scope="row">Tür</th>
+                                    <td>@(oyuncakTur != null ? oyuncakTur.Oyuncak_Tur : "Tür bulunamadı")</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Renk</th>
+                                    <td>@(oyuncakRenk != null ? oyuncakRenk.Oyuncak_Renk : "Tür bulunamadı")</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Boy</th>
+                                    <td colspan="2">@Model.Oyuncak_Boy</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Ağırlık</th>
+                                    <td colspan="2">@Model.Oyuncak_Agirlik</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <div>
+        @Html.Partial("_PartialFoot1")
+
+    </div>
+
+
+
+
+
+</body>
+</html>

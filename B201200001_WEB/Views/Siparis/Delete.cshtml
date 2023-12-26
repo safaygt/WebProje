@@ -1,0 +1,64 @@
+﻿@model B201200001_WEB.Siparis
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Siparis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Oyuncak_Adet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oyuncak_Adet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fatura_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fatura_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kullanici.Kullanici_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kullanici.Kullanici_Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Magaza.Magaza_Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Magaza.Magaza_Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oyuncak.Oyuncak_Tur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oyuncak.Oyuncak_Tur)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

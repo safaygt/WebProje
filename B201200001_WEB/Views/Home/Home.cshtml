@@ -1,0 +1,104 @@
+﻿@model IEnumerable<B201200001_WEB.Oyuncak>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Title = "Home Page";
+
+   
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+
+        .card {
+            height: 50%;
+            width: 80%;
+        }
+
+        .jumbotron {
+            background-image: url("../../images/pexels-markus-spiske-168866.jpg");
+            background-size: cover;
+            
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .text-body-secondary {
+            font-weight: bolder;
+        }
+
+        .bolder {
+            font-weight:bolder;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="jumbotron py-4 pt-5 mb-3 mt-4">
+            <div class="col-md-12">
+                <div class="h-100 p-5 rounded-3">
+                    <h2 style="position:center; padding-left:40%; color:aliceblue;">TOY STORE</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="bd-example m-0 border-0">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var product in Model)
+                {
+                    var oyuncakTur = product.OyuncakTur.FirstOrDefault(t => t.Oyuncak_Tur_ID == product.Oyuncak_Tur_ID);
+
+                        <div class="col pt-4">
+                            <a href="@Url.Action("Details", "Home", new { id = product.Oyuncak_ID })" class="card h-100">
+                                <div class="card h-100" style="width:100%">
+
+                                    <img src="@product.Oyuncak_Resim" alt="Product Image" class="product-image" data-product-id="@product.Oyuncak_ID" />
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">@(oyuncakTur != null ? oyuncakTur.Oyuncak_Tur : "Tür bulunamadı")</h5>
+                                        <p class="card-text"><span class="bolder">Mağaza Ad: </span>@product.Magaza.Magaza_Ad</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-body-secondary">@product.Oyuncak_Fiyat$</small>
+                                    </div>
+                                </div>
+                                 </a>
+                        </div>
+
+                   
+
+                }
+            </div>
+
+            <div>
+                @Html.Partial("_PartialFoot1")
+
+            </div>
+        </div>
+    </div>
+
+   
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿@model B201200001_WEB.Oyuncak
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Oyuncak</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Oyuncak_Tur)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Oyuncak_Tur)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Oyuncak_Agirlik)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Oyuncak_Agirlik)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Oyuncak_Boy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Oyuncak_Boy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Oyuncak_Renk)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Oyuncak_Renk)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Siparis_ID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Siparis_ID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Magaza.Magaza_Ad)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Magaza.Magaza_Ad)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Oyuncak_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

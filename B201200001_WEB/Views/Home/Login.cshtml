@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <style>
+         #cont{
+
+            display:flex;
+            justify-content:center;
+            width:100%;
+            height:100%;
+            align-content:center;
+            margin-top:200px;
+        }
+
+
+        .btn {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 1%;
+            width: 20%;
+            cursor: pointer;
+            background: #0062cc;
+            color: #fff;
+        }
+
+
+        .form-content {
+            padding: 5%;
+            border: 1px solid #ced4da;
+            margin-bottom: 2%;
+        }
+
+        .form-control {
+            border-radius: 1.5rem;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="cont">
+        <form method="post" action="@Url.Action("Login","Home")">
+            
+            <h1 class="h3 mb-3 fw-normal" >Login</h1>
+
+            <div class="form-floating mt-2">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mt-2">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            @*<div class="form-check text-start my-3">
+                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Remember me
+                </label>
+            </div>*@
+
+            <div class="form-floating mt-2">
+                <a href="@Url.Action("HomeAnon","Home")">Üye olmadan devam et</a>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2 mt-4" type="submit">Login</button>
+            <p class="mt-5 mb-3 text-body-secondary">@ViewBag.ErrorMessage</p>
+            <p class="mt-5 mb-3 text-body-secondary">© Safa YİĞİT</p>
+        </form>
+
+    </div>
+</body>
+</html>

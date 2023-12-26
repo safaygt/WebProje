@@ -1,0 +1,99 @@
+﻿@model B201200001_WEB.Kullanici
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<!doctype HTML>
+<html>
+
+<head>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2>Delete User</h2>
+
+        <h3>Are you sure you want to delete this user?</h3>
+
+        <div>
+            <h4>User Information</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Kullanici_Ad)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Kullanici_Ad)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sifre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Sifre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Adres_ID)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Adres_ID)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Siparis_ID)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Siparis_ID)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Admin_Situation)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Admin_Situation)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+﻿@model IEnumerable<B201200001_WEB.Oyuncak>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Index</title>
+
+    <style>
+        .badge {
+            
+
+        
+            background-color:cornflowerblue;
+            color:aliceblue;
+            padding: 4px 8px;
+            text-align: center;
+            border-radius: 5px;
+        
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container pb-5 mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/images/car.jpeg" class="img-responsive w-100">
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            Oyuncak Araba
+                        </h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="badge">In Stock</span>
+                        </div>
+                    </div>
+                    <div class="row mt-5" id="description">
+                        <div class="col-md-12">
+                            <p>Place sticky content here. Place sticky content here. Place sticky content here. Place sticky content here.</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <span class="badge">53</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            @foreach (var product in Model)
+                            {
+                                <h4 id="product-price">@(product.Oyuncak_Fiyat)</h4>
+                            }
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success">
+                                <i class="bi bi-bag-plus-fill"></i>
+                                Add To Cart
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="bd-example">
+                <nav>
+                    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Features</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="bd-example">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Tür</th>
+                                    <td>Mark</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Renk</th>
+                                    <td>fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Boy</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Ağırlık</th>
+                                    <td colspan="2">AAAA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script>
+        // Sayfa yüklendiğinde çalışacak JavaScript kodu
+        document.addEventListener("DOMContentLoaded", function () {
+            // Sayfa URL'sini al
+            var url = window.location.href;
+
+            // URL'yi "/" karakterine göre ayır ve son elemanı al (ID)
+            var segments = url.split('/');
+            var id = segments[segments.length - 1];
+
+            // Elde edilen ID'yi kullanarak istediğiniz işlemleri gerçekleştirin
+            console.log("ID: " + id);
+            ViewBag.productID = id;
+
+            // Örneğin, bir AJAX isteği yapabilir ve ilgili verileri alabilirsiniz
+            // AJAX isteği yapma örneği:
+            /*
+            $.ajax({
+                url: "/Oyuncaks/GetOyuncakById?id=" + id,
+                method: "GET",
+                success: function (data) {
+                    // Verileri kullanarak sayfayı güncelle
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+            */
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+    @*<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Oyuncak_Tur)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Oyuncak_Agirlik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Oyuncak_Boy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Oyuncak_Renk)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Siparis_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Magaza.Magaza_Ad)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oyuncak_Tur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oyuncak_Agirlik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oyuncak_Boy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oyuncak_Renk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Siparis_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Magaza.Magaza_Ad)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Oyuncak_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Oyuncak_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Oyuncak_ID })
+                </td>
+            </tr>
+        }
+
+        </table>*@
+</body>
+</html>
